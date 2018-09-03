@@ -55,8 +55,6 @@ export default class MenuBuilder {
             openAboutWindow({
               icon_path: path.resolve(__dirname, '../resources/host.png'),
               package_json_dir: path.resolve(__dirname, '../'),
-              bug_report_url: '',
-              homepage: '',
               copyright: '©2018 许会元 All right reserved',
               product_name: 'myHost'
             });
