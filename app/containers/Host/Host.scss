@@ -1,0 +1,72 @@
+.host {
+  // TODO: 用了REM 是否还需要用嵌套形式
+  height: 100vh;
+}
+
+.setting {
+  height: calc(100vh - 60px); // 60px tabbar的高度
+  display: flex;
+
+  .mainNav {
+    width: 280px;
+    overflow: auto;
+    flex: 0 0 auto;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+
+    .nametree {
+      flex: 1 1 auto;
+      border-bottom: 1px solid #eee;
+    }
+
+    .operater {
+      flex: 0 0 40px;
+      text-align: center;
+
+      .operater--plus {
+        outline: none;
+        font-size: 24px;
+        text-align: center;
+      }
+    }
+  }
+
+  .hostEdit {
+    flex: 1 1 auto;
+  }
+}
+
+.node {
+  width: 180px;
+  height: 20px;
+  display: flex;
+
+  .node--edit,
+  .node--plus,
+  .node--delete {
+    display: none;
+  }
+
+  .node--text {
+    width: 160px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &:hover {
+    .node--text {
+      width: 120px;
+    }
+
+    .node--edit,
+    .node--plus,
+    .node--delete {
+      display: block;
+      padding: 0 4px;
+      flex: 0 0 10px;
+    }
+  }
+}
