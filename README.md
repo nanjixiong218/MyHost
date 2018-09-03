@@ -21,7 +21,7 @@
 
 1. containers 作为页面入口，不在只是redux 关联层。
 2. components 作为通用组件层，而非页面渲染层。
-3. 改写了 redux的 [bindActionCreators](https://github.com/nanjixiong218/MyHost/blob/master/app/utils/bindActionCreators.js), 使它支持redux-actions, 原来的 bindActionCreators 不知道actionCreator的对象嵌套 
+3. 改写了 redux的 [bindActionCreators](https://github.com/nanjixiong218/MyHost/blob/master/app/utils/bindActionCreators.js), 使它支持redux-actions, 原来的 bindActionCreators 不支持 actionCreator的对象嵌套 
 
 ## Screenshot
 
@@ -35,7 +35,7 @@
 $ yarn dev
 ```
 
-可以独立启动 render 进程和主进程， 可以在两个控制台 分别运行 一下两个命令:
+可以独立启动 render 进程和主进程,可以在两个控制台 分别运行以下两个命令:
 
 ```bash
 $ yarn start-renderer-dev
@@ -78,7 +78,7 @@ $ yarn build
 $ yarn test-e2e
 ```
 
-测试你的打包后的程序只需要在打包时添加`DEBUG_PROD=true`的环境变量即可:
+想要调试你打包后的程序只需要在打包时添加`DEBUG_PROD=true`的环境变量即可:
 
 ```bash
 DEBUG_PROD=true yarn package
@@ -96,15 +96,15 @@ DEBUG_PROD=true yarn package
 
 ### 应该使用哪一个 `package.json` 
 
-**主要规则** is: 除了`native`模块，或者模块带有`native`依赖， 所有的三方模块都应该加入到 `./package.json`. `native`模块或者带有`native`依赖的模块需要加入到 `./app/package.json`.
+**主要规则** is: 除了`native`模块, 或者模块带有`native`依赖， 所有的三方模块都应该加入到 `./package.json`. `native`模块或者带有`native`依赖的模块需要加入到 `./app/package.json`.
 
-1. 如果一个模块是和平台管理的 native 模块 （如 node-postgres），它应该加入到 `./app/package.json` 的 `dependencies` 中， 
-2. 如果一个模块仅仅是被另一个模块 `import`ed , 它应该加入到 `./package.json` 的 `dependencies` 中 . 请看[this ESLint rule](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md). 比如这些模块`material-ui`, `redux-form`, 和`moment`.
-3. 除此之外, 用于打包，测试，调试开发的模块应该加入到 `./package.json` 的 `devDependencies` 中。 
+1. 如果一个模块是和平台管理的native模块(如node-postgres),它应该加入到 `./app/package.json` 的 `dependencies` 中， 
+2. 如果一个模块仅仅是被另一个模块 `import`, 它应该加入到 `./package.json` 的 `dependencies` 中 . 请看[this ESLint rule](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md). 比如这些模块`material-ui`, `redux-form`, 和`moment`.
+3. 除此之外, 用于打包、测试、调试开发的模块应该加入到 `./package.json` 的 `devDependencies` 中。 
 
 ### 进一步阅读 
 
-查看此wiki , [Module Structure — Two package.json Structure](https://github.com/chentsulin/electron-react-boilerplate/wiki/Module-Structure----Two-package.json-Structure) to understand what is native module, the rationale behind two package.json structure and more.
+理解更多关于native 模块的信息，查看此wiki [Module Structure — Two package.json Structure](https://github.com/chentsulin/electron-react-boilerplate/wiki/Module-Structure----Two-package.json-Structure).
 
 一个依赖 native 模块的例子 , see [erb-sqlite-example](https://github.com/amilajack/erb-sqlite-example).
 
@@ -113,9 +113,9 @@ DEBUG_PROD=true yarn package
 
 除了`.global.css`, 所有的 `.css` 文件都会使用css-modules
 
-如果你有全局样式，添加在`.global.css`不会进行走css-modules处理，比如`app.global.css`
+如果你有全局样式，添加在`.global.css`不会走css-modules处理，比如`app.global.css`
 
-如果你想要引入全局css 包（如 `bootstrap`）, 只需要写在 `.global.css`中
+如果你想要引入全局css包（如 `bootstrap`）, 只需要写在 `.global.css`中
 
 ```css
 @import '~bootstrap/dist/css/bootstrap.css';
@@ -144,5 +144,5 @@ MIT © [nanjixiong218](https://github.com/nanjixiong218)
 
 ## TODO
 
-1. 添加测试，主要逻辑在store层，所以主要进行redux相关测试，view层测试有时间可以基于jest做一些
+1. 添加测试, 主要逻辑在store层, 所以主要进行redux相关测试，view层测试有时间可以基于jest做一些
 2. window 兼容，目前只支持mac
