@@ -163,14 +163,14 @@ export default class MenuBuilder {
           label: '文档',
           click() {
             shell.openExternal(
-              'https://github.com/atom/electron/tree/master/docs#readme'
+              'https://github.com/nanjixiong218/MyHost'
             );
           }
         },
         {
           label: '搜索issues',
           click() {
-            shell.openExternal('https://github.com/nanjixiong218/');
+            shell.openExternal('https://github.com/nanjixiong218/MyHost/issues');
           }
         }
       ]
