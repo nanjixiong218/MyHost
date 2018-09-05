@@ -4,6 +4,8 @@
 
 simplest host change tool!
 
+[百度网盘下载](https://pan.baidu.com/s/1YDLAwV9FQZotnkETXSL_Uw)
+
 ## Main technology stack
 
 generate by electron-react-boilerplate
