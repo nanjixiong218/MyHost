@@ -18,7 +18,7 @@ import MenuBuilder from './menu';
 
 
 let mainWindow = null;
-const tray = null;
+let tray = null;
 
 // function getResourcePath() {
 //   if(process.env.NODE_ENV === 'development') {
@@ -108,26 +108,26 @@ async function createWindow() {
     await installExtensions();
   }
 
-  // if (!tray) {
-  //   tray = new Tray(oPath.join(__dirname, '../resources/host16x16.png'));
-  // }
+  if (!tray) {
+    tray = new Tray(oPath.join(__dirname, '../resources/host16x16.png'));
+  }
 
-  // const contextMenu = Menu.buildFromTemplate([
-  //   {
-  //     label: '退出MyHost',
-  //     click() {
-  //       app.quit();
-  //     }
-  //   }
-  // ]);
-  // tray.setToolTip('MyHost');
-  // // tray.setContextMenu(contextMenu) // 回覆盖click行为，click默认为popUp
-  // tray.on('click', () => {
-  //   mainWindow.show();
-  // });
-  // tray.on('right-click', () => {
-  //   tray.popUpContextMenu(contextMenu);
-  // });
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: '退出MyHost',
+      click() {
+        app.quit();
+      }
+    }
+  ]);
+  tray.setToolTip('MyHost');
+  // tray.setContextMenu(contextMenu) // 回覆盖click行为，click默认为popUp
+  tray.on('click', () => {
+    mainWindow.show();
+  });
+  tray.on('right-click', () => {
+    tray.popUpContextMenu(contextMenu);
+  });
 
   mainWindow = new BrowserWindow({
     show: false,
