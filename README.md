@@ -2,6 +2,8 @@
 
 最简单的host切换工具！[切换英文](https://github.com/nanjixiong218/MyHost/blob/master/README-zh.md)
 
+[百度网盘下载](https://pan.baidu.com/s/1YDLAwV9FQZotnkETXSL_Uw)
+
 ## 描述 
 
 之前在阿里内部使用 iHost 进行host管理，简单易用。出来后发现其并没有开放，同类型的产品没有太好用的，索性自己写一个。（目前只支持mac）
