@@ -34,20 +34,41 @@ export default {
     ...Object.keys(possibleExternals || {}).filter(filterDepWithoutEntryPoints)
   ],
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
-          }
-        }
-      }
-    ]
-  },
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.jsx?$/,
+  //       exclude: /node_modules/,
+  //       use: {
+  //         loader: 'babel-loader',
+  //         options: {
+  //           cacheDirectory: true
+  //         }
+  //       }
+  //     },
+  //     // EOT Font
+  //     {
+  //       test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+  //       use: 'file-loader'
+  //     },
+  //     // SVG Font
+  //     {
+  //       test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+  //       use: {
+  //         loader: 'url-loader',
+  //         options: {
+  //           limit: 10000,
+  //           mimetype: 'image/svg+xml'
+  //         }
+  //       }
+  //     },
+  //     // Common Image Formats
+  //     {
+  //       test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
+  //       use: 'url-loader'
+  //     }
+  //   ]
+  // },
 
   output: {
     path: path.join(__dirname, 'app'),

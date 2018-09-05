@@ -52,12 +52,12 @@ export default class MenuBuilder {
         {
           label: '关于 MyHost',
           click: () => {
-            openAboutWindow({
-              icon_path: path.resolve(__dirname, '../resources/host.png'),
-              package_json_dir: path.resolve(__dirname, '../'),
-              copyright: '©2018 许会元 All right reserved',
-              product_name: 'myHost'
-            });
+            // openAboutWindow({
+            //   icon_path: path.resolve(__dirname, '../resources/host.png'),
+            //   package_json_dir: path.resolve(__dirname, '../'),
+            //   copyright: '©2018 许会元 All right reserved',
+            //   product_name: 'myHost'
+            // });
           }
         },
         { type: 'separator' },

@@ -13,9 +13,20 @@
 import oPath from 'path';
 import { app, globalShortcut, Menu, Tray, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
+// import hostIcon from '../resources/host16x16.png';
+// const hostIcon = require('../resources/host16x16.png');
+
 
 let mainWindow = null;
 let tray = null;
+
+// function getResourcePath() {
+//   if(process.env.NODE_ENV === 'development') {
+//     return oPath.join(__dirname, '../resources')
+//   } 
+//     return oPath.join(__dirname, '/resources')
+  
+// }
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -98,7 +109,7 @@ async function createWindow() {
   }
 
   if (!tray) {
-    tray = new Tray(oPath.resolve(__dirname, '../resources/host16x16.png'));
+    tray = new Tray(oPath.join(__dirname, '../resources/host16x16.png'));
   }
 
   const contextMenu = Menu.buildFromTemplate([
@@ -126,6 +137,7 @@ async function createWindow() {
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
+  mainWindow.show()
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
   mainWindow.webContents.on('did-finish-load', () => {
