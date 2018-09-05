@@ -1,6 +1,6 @@
 # MyHost
 
-最简单的host切换工具！[切换英文](https://github.com/nanjixiong218/MyHost/blob/master/README-zh.md)
+最简单的host切换工具！[切换英文](https://github.com/nanjixiong218/MyHost/blob/master/README-en.md)
 
 [百度网盘下载](https://pan.baidu.com/s/1YDLAwV9FQZotnkETXSL_Uw)
 
