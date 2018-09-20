@@ -16,16 +16,15 @@ import MenuBuilder from './menu';
 // import hostIcon from '../resources/host16x16.png';
 // const hostIcon = require('../resources/host16x16.png');
 
-
 let mainWindow = null;
-let tray = null;
+const tray = null;
 
 // function getResourcePath() {
 //   if(process.env.NODE_ENV === 'development') {
 //     return oPath.join(__dirname, '../resources')
-//   } 
+//   }
 //     return oPath.join(__dirname, '/resources')
-  
+
 // }
 
 if (process.env.NODE_ENV === 'production') {
@@ -108,26 +107,26 @@ async function createWindow() {
     await installExtensions();
   }
 
-  if (!tray) {
-    tray = new Tray(oPath.join(__dirname, '../resources/host16x16.png'));
-  }
+  // if (!tray) {
+  //   tray = new Tray(oPath.join(__dirname, '../resources/host16x16.png'));
+  // }
 
-  const contextMenu = Menu.buildFromTemplate([
-    {
-      label: '退出MyHost',
-      click() {
-        app.quit();
-      }
-    }
-  ]);
-  tray.setToolTip('MyHost');
-  // tray.setContextMenu(contextMenu) // 回覆盖click行为，click默认为popUp
-  tray.on('click', () => {
-    mainWindow.show();
-  });
-  tray.on('right-click', () => {
-    tray.popUpContextMenu(contextMenu);
-  });
+  // const contextMenu = Menu.buildFromTemplate([
+  //   {
+  //     label: '退出MyHost',
+  //     click() {
+  //       app.quit();
+  //     }
+  //   }
+  // ]);
+  // tray.setToolTip('MyHost');
+  // // tray.setContextMenu(contextMenu) // 回覆盖click行为，click默认为popUp
+  // tray.on('click', () => {
+  //   mainWindow.show();
+  // });
+  // tray.on('right-click', () => {
+  //   tray.popUpContextMenu(contextMenu);
+  // });
 
   mainWindow = new BrowserWindow({
     show: false,
@@ -137,7 +136,7 @@ async function createWindow() {
 
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
-  mainWindow.show()
+  mainWindow.show();
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
   mainWindow.webContents.on('did-finish-load', () => {
