@@ -11,13 +11,20 @@
  * @flow
  */
 import oPath from 'path';
-import { app, globalShortcut, Menu, Tray, BrowserWindow } from 'electron';
+import {
+  app,
+  globalShortcut,
+  Menu,
+  Tray,
+  BrowserWindow,
+  nativeImage
+} from 'electron';
 import MenuBuilder from './menu';
 // import hostIcon from '../resources/host16x16.png';
 // const hostIcon = require('../resources/host16x16.png');
 
 let mainWindow = null;
-const tray = null;
+let tray = null;
 
 // function getResourcePath() {
 //   if(process.env.NODE_ENV === 'development') {
@@ -107,26 +114,29 @@ async function createWindow() {
     await installExtensions();
   }
 
-  // if (!tray) {
-  //   tray = new Tray(oPath.join(__dirname, '../resources/host16x16.png'));
-  // }
+  if (!tray) {
+    const trayPath = `${__dirname}/statics/host16x16.png`;
+    console.log('trayPath', trayPath);
+    const trayUrl = nativeImage.createFromPath(trayPath);
+    tray = new Tray(trayUrl);
+  }
 
-  // const contextMenu = Menu.buildFromTemplate([
-  //   {
-  //     label: '退出MyHost',
-  //     click() {
-  //       app.quit();
-  //     }
-  //   }
-  // ]);
-  // tray.setToolTip('MyHost');
-  // // tray.setContextMenu(contextMenu) // 回覆盖click行为，click默认为popUp
-  // tray.on('click', () => {
-  //   mainWindow.show();
-  // });
-  // tray.on('right-click', () => {
-  //   tray.popUpContextMenu(contextMenu);
-  // });
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: '退出MyHost',
+      click() {
+        app.quit();
+      }
+    }
+  ]);
+  tray.setToolTip('MyHost');
+  // tray.setContextMenu(contextMenu) // 回覆盖click行为，click默认为popUp
+  tray.on('click', () => {
+    mainWindow.show();
+  });
+  tray.on('right-click', () => {
+    tray.popUpContextMenu(contextMenu);
+  });
 
   mainWindow = new BrowserWindow({
     show: false,
