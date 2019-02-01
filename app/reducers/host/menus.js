@@ -9,6 +9,8 @@ import {
   changeCheckedKeys
 } from 'Actions/host/menus';
 import type { actionType, menuItemType, menuStateType } from '../types';
+const ctrlForWindow = '\r\n';
+const hostText = `## 可以再次处添加注释 ${ctrlForWindow}`;
 
 export default handleActions(
   {
@@ -22,7 +24,7 @@ export default handleActions(
         showOpts: false,
         isEditing: false,
         isGroup: false,
-        hostText: '## 可在此处添加host说明',
+        hostText: hostText,
         children: isGroup
           ? [
               {
@@ -31,7 +33,7 @@ export default handleActions(
                 showOpts: false,
                 isEditing: false,
                 isGroup: false,
-                hostText: '## 可在此处添加host说明',
+                hostText: hostText,
                 children: []
               }
             ]

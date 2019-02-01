@@ -63,6 +63,7 @@ class Host extends Component<Props> {
 
   componentDidUpdate = async preProps => {
     const { currentHostShowning, changeCheckedKeys, systemHost } = this.props;
+    console.log(currentHostShowning)
     if (currentHostShowning !== systemHost) {
       // TODO: 一旦权限更改失败，这里会进入死循环
       this.syncHostDebounce(currentHostShowning);

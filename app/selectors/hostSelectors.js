@@ -7,15 +7,19 @@ export const getActiveKey = state => state.host.menus.activeKey;
 export const getCheckedKeys = state => state.host.menus.checkedKeys;
 export const getSystemHost = state => state.host.systemHost.systemHost;
 
+// TODO: window 换行是/r/n, mac下是/n/n
+
+const ctrlForWindow = '\r\n';
+const ctrlForMac = '/n/n';
 export const getCurrentHostShowing = createSelector(
   [getMenuTree, getCheckedKeys],
   (menuTree, checkedKeys) => {
     let result = '';
     Utils.treeTravel(menuTree, null, (key, item) => {
       if (checkedKeys.includes(item.key)) {
-        result += `#### ${item.title} \n\n`;
-        result += item.hostText;
-        result += `\n\n`;
+        result += `#### ${item.title} ${ctrlForWindow}`;
+        result += `${item.hostText}`.replace(/\n/g,'\r\n');
+        result += `${ctrlForWindow}`;
       }
     });
     return result;

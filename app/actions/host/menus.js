@@ -18,7 +18,7 @@ const changeItemProp = (propName: string) => (
         showOpts: false,
         isEditing: false,
         isGroup: false,
-        hostText: '## 可在此处添加host说明',
+        hostText: '## 可在此处添加host3说明 \r\n',
         children: []
       }
     ];
