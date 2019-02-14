@@ -11,6 +11,7 @@
  * @flow
  */
 import oPath from 'path';
+import os from 'os';
 import {
   app,
   globalShortcut,
@@ -20,6 +21,9 @@ import {
   nativeImage
 } from 'electron';
 import MenuBuilder from './menu';
+
+const platform = os.platform()
+console.log('platform: ', platform);
 // import hostIcon from '../resources/host16x16.png';
 // const hostIcon = require('../resources/host16x16.png');
 
